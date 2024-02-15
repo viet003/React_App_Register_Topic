@@ -1,0 +1,11 @@
+export { default as Login } from "./Login"
+export { default as Main } from "./Main"
+export { default as ForgotPass } from "./ForgotPass"
+export { default as Profile } from "./Profile"
+export { default as Lookup } from "./StudentPages/Lookup"
+export { default as Course } from "./StudentPages/Course"
+export { default as Home } from "./Home"
+export { default as Account } from "./AdminPages/Account"
+export { default as Topic } from "./LecturerPages/Topics"
+export { default as User } from "./AdminPages/User"
+// file export
