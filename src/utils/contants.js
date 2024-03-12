@@ -8,7 +8,9 @@ export const path = {
     HOME: "home",
     ACCOUNT : "tai-khoan",
     TOPIC: "de-tai",
-    USER: "nguoi-dung"
+    USER: "nguoi-dung",
+    ANNOUNCEMENT : "announcements",
+    PEOPLES: "peoples"
 }
 
 // đường dẫn đến các trang

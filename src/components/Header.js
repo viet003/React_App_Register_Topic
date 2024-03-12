@@ -30,7 +30,7 @@ const Header = (props) => {
     const dispatch = useDispatch()
 
     return (
-        <div className="flex justify-between items-center h-full px-4">
+        <div className="flex justify-between items-center h-full pl-6 z-100">
             <div className="flex items-center text-primary">
                 <div className="lg:hidden">
                     <div className="flex items-center justify-start">
@@ -48,14 +48,14 @@ const Header = (props) => {
             <div className="p-4 w-[250px]">
                 <img src={logo} alt="" className="h-full w-full" />
             </div>
-            <div onClick={conTroler} className="flex items-center h-full mr-2 text-primary relative cursor-pointer">
+            <div onClick={conTroler} className="flex items-center h-full mr-2 text-primary relative cursor-pointer z-100">
                 <div className="hover:text-orange-600 flex items-center h-full mr-2 text-primary cursor-pointer">
                     <img src={user} alt="" className={`w-[41px] h-[41px] rounded-full object-cover sm:mr-4`} />
                     <p className="text-primary cursor-pointer text-[13px] scale-x-0 w-0 sm:w-[57%] sm:scale-100 lg:text-[1rem] mx-2">{email}</p>
                     <BiChevronDown className={`${toggle ? "rotate-180 transition-all duration-100" : "transition-all"} mx-2 text-[20px] xl:text-[25px] cursor-pointer`} />
                 </div>
-                <div className={` ${toggle ? "opacity-100 transition-all duration-100" : ""} absolute top-full right-0 opacity-0 shadow-xl rounded-xl`}>
-                    <div className="flex flex-col gap-2 bg-gray-100 py-3 px-4 rounded-xl">
+                <div className={` ${toggle ? "block transition-all duration-100" : "hidden"} absolute top-full right-0  shadow-xl rounded-xl z-80`}>
+                    <div className="flex flex-col gap-2 bg-gray-100 py-3 px-4 rounded-xl z-100">
                         <div className="flex items-center gap-4 hover:text-orange-700 cursor-pointer" onClick={() => setChange(true)}>
                             <BiKey className="text-[25px]" />
                             <p>Thay đổi mật khẩu</p>

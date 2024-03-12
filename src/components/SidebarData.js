@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback , useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { IoIosLogOut } from "react-icons/io";
@@ -11,11 +11,13 @@ import { useDispatch } from "react-redux"
 import * as actions from "../stores/actions"
 import { FaUserCheck } from "react-icons/fa";
 import { MdTopic } from "react-icons/md";
-
+import { useLocation } from 'react-router-dom';
 
 
 
 const SidebarData = (props) => {
+    const location = useLocation()
+    // const [activeItem, setActiveItem] = useState(); // Trạng thái của phần tử đang được click
     const navigate = useNavigate()
     const getContent = props.getContent;
     const type = props.type;
@@ -24,44 +26,47 @@ const SidebarData = (props) => {
         getContent(input);
     }
     const dispatch = useDispatch()
+    useEffect(() => {
+        // setActiveItem(pathname
+    }, [])
     return (
         <div className={`${toggle ? "" : ""} flex flex-col justify-between h-[90%]`}>
             {/*<div className="">
                 <div onClick={useCallback(() => { navigate(path.HOME); handleFunction("Home") })} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
                     <div className="mr-8 text-[1.7rem] "><RxDashboard /></div>
-                    <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Trang chủ</div>
+                    <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Trang chủ</div>
                 </div>
                 <div onClick={useCallback(() => { navigate(path.PROFILE); handleFunction("Thông tin cá nhân") })} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
                     <div className="mr-8 text-[1.7rem] "><ImProfile /></div>
-                    <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Thông tin</div>
+                    <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Thông tin</div>
                 </div>
                 <div onClick={useCallback(() => { navigate(path.COURSE); handleFunction("Đăng ký trực tuyến") })} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
                     <div className="mr-8 text-[1.7rem] "><FaUserGraduate /></div>
-                    <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Đăng ký</div>
+                    <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Đăng ký</div>
                 </div>
                 <div onClick={useCallback(() => { navigate(path.LOOKUP); handleFunction("Tra cứu kết quả") })} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
                     <div className="mr-8 text-[1.7rem] "><MdFindInPage /></div>
-                    <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Tra cứu</div>
+                    <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Tra cứu</div>
                 </div>
                 <div onClick={useCallback(() => { navigate(path.ACCOUNT); handleFunction("Tài khoản") })} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
                     <div className="mr-8 text-[1.7rem] "><RiAccountPinBoxFill /></div>
-                    <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Tài khoản</div>
+                    <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Tài khoản</div>
                 </div>
             </div>*/}
             {
                 type === "Quản trị viên" && (
                     <div>
-                        <div onClick={() => { navigate(path.HOME); handleFunction("Home") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
+                        <div onClick={() => { navigate(path.HOME); handleFunction("Home");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.HOME) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><RxDashboard /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Trang chủ</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Trang chủ</div>
                         </div>
-                        <div onClick={() => { navigate(path.ACCOUNT); handleFunction("Tài khoản") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
+                        <div onClick={() => { navigate(path.ACCOUNT); handleFunction("Tài khoản");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.ACCOUNT)? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><RiAccountPinBoxFill /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Tài khoản</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Tài khoản</div>
                         </div>
-                        <div onClick={() => { navigate(path.USER); handleFunction("Người dùng") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
+                        <div onClick={() => { navigate(path.USER); handleFunction("Người dùng");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.USER) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><FaUserCheck /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Người dùng</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Người dùng</div>
                         </div>
                     </div>
                 )
@@ -69,17 +74,17 @@ const SidebarData = (props) => {
             {
                 type === "Giảng viên/nhân viên" && (
                     <div>
-                        <div onClick={() => { navigate(path.HOME); handleFunction("Home") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
+                        <div onClick={() => { navigate(path.HOME); handleFunction("Home");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.HOME) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><RxDashboard /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Trang chủ</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Trang chủ</div>
                         </div>
-                        <div onClick={() => { navigate(path.PROFILE); handleFunction("Thông tin cá nhân") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
+                        <div onClick={() => { navigate(path.PROFILE); handleFunction("Thông tin cá nhân");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.PROFILE) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><ImProfile /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Thông tin</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Thông tin</div>
                         </div>
-                        <div onClick={() => { navigate(path.TOPIC); handleFunction("Đề tài") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
+                        <div onClick={() => { navigate(path.TOPIC); handleFunction("Đề tài");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.TOPIC) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><MdTopic /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Đề tài</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Đề tài</div>
                         </div>
                     </div>
                 )
@@ -87,21 +92,21 @@ const SidebarData = (props) => {
             {
                 type === "Sinh viên" && (
                     <div>
-                        <div onClick={() => { navigate(path.HOME); handleFunction("Home") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
+                        <div onClick={() => { navigate(path.HOME); handleFunction("Home");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData  ${location.pathname.includes(path.HOME) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><RxDashboard /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Trang chủ</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Trang chủ</div>
                         </div>
-                        <div onClick={() => { navigate(path.PROFILE); handleFunction("Thông tin cá nhân") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
+                        <div onClick={() => { navigate(path.PROFILE); handleFunction("Thông tin cá nhân");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.PROFILE) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><ImProfile /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Thông tin</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Thông tin</div>
                         </div>
-                        <div onClick={() => { navigate(path.COURSE); handleFunction("Đăng ký trực tuyến") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
+                        <div onClick={() => { navigate(path.COURSE); handleFunction("Đăng ký trực tuyến");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.COURSE) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><FaUserGraduate /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Đăng ký</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Đăng ký</div>
                         </div>
-                        <div onClick={() => { navigate(path.LOOKUP); handleFunction("Tra cứu kết quả") }} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData `}>
+                        <div onClick={() => { navigate(path.LOOKUP); handleFunction("Tra cứu kết quả");}} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData ${location.pathname.includes(path.LOOKUP) ? "bg-gray-100 text-black transition-all duration-300" : ""}`}>
                             <div className="mr-8 text-[1.7rem] "><MdFindInPage /></div>
-                            <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Tra cứu</div>
+                            <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Tra cứu</div>
                         </div>
                     </div>
                 )
@@ -109,7 +114,7 @@ const SidebarData = (props) => {
             <div>
                 <div onClick={useCallback(() => { dispatch(actions.logout()); navigate(path.LOGIN) })} className={`${toggle ? "w-[3.5rem]" : "w-[12rem]"} sideData`}>
                     <div className="mr-8 text-[1.7rem] "><IoIosLogOut /></div>
-                    <div className={`${toggle ? "opacity-0 delay-100" : "transition-opacity delay-100"} text-[14px] whitespace-pre`}>Đăng xuất</div>
+                    <div className={`${toggle ? "opacity-0 " : "transition-opacity "} text-[14px] whitespace-pre`}>Đăng xuất</div>
                 </div>
             </div>
         </div>

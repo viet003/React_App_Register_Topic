@@ -2,14 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
 
 @layer base {
     .sidebar {
-        @apply bg-primary h-[100%] w-[13rem] rounded-l-xl p-2
-        border transition-all duration-500 relative 
+        @apply bg-primary h-[100%] w-[13rem] rounded-l-xl p-2 border transition-all duration-300 relative
     }
-    .sideData {
-        @apply flex p-3 text-white items-center  my-3 rounded-xl cursor-pointer hover:text-black hover:bg-white transition-all duration-200 
 
+    .sideData {
+        @apply flex p-3 text-white items-center my-3 rounded-xl cursor-pointer hover:text-black hover:bg-white transition-all duration-200
     }
+
+    .sideData:focus {
+        @apply text-black bg-white
+    }
+
+    a {
+        @apply text-[#4A90E2] underline
+    }
+
+    span {
+        @apply hover:underline cursor-pointer
+    }
+
+    /* html {
+        font-family: 'Hanken Grotesk', sans-serif;
+    } */
 }

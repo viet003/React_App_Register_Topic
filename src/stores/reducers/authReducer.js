@@ -13,7 +13,7 @@ const authReducer = (state = initState, action) => {
             return ({
                 ...state,
                 isLoggedIn: true,
-                token: action.data.token,
+                token: action?.data?.token,
                 msg: '',
             })
         case actionTypes.LOGIN_FAIL:
@@ -21,7 +21,7 @@ const authReducer = (state = initState, action) => {
                 ...state,
                 isLoggedIn: false,
                 token: null,
-                msg: action.data.msg ? action.data.msg : '',
+                msg: action?.data?.msg ? action?.data?.msg : '',
             })
         case actionTypes.LOGOUT: 
             return ({

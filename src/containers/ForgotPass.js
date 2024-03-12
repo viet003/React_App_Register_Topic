@@ -9,14 +9,16 @@ import book from "../assets/book.png"
 import note from "../assets/note.png"
 import bag from "../assets/bag.png"
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
-import { apiGetPass } from "../services/auth"
+import { apiGetPass } from "../services/authService"
 import Swal from "sweetalert2";
 import { Backdrop, CircularProgress } from '@mui/material';
-
+import { useTitle } from "react-use"
 
 const ForgotPass = () => {
+  useTitle('Quên mật khẩu')
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
+  const [err, setErr] = useState('')
   const goPage = useCallback(() => {
     navigate(path.LOGIN);
   }, [])
@@ -38,36 +40,52 @@ const ForgotPass = () => {
 
   const getPass = async () => {
     try {
-      const response = await apiGetPass(data)
-      if (response.status === 200) {
-        setLoading(false)
-        const result = await Swal.fire({
-          title: "Succeeded!",
-          text: response.data.msg,
-          icon: "success",
-          showConfirmButton: true,
-        });
-        if (result.isDismissed || result.isConfirmed) {
-          goPage()
+      if (data.email === '') {
+        setErr('Thông tin không được bỏ trống.')
+      } else {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+          setErr('Thông tin không đúng định dạng.')
+        } else {
+          setLoading(true)
+          const response = await apiGetPass(data)
+          if (response?.status === 200 && response?.data?.err === 0) {
+            setLoading(false)
+            const result = await Swal.fire({
+              title: "Succeeded!",
+              text: response?.data?.msg,
+              icon: "success",
+              showConfirmButton: true,
+            });
+            if (result.isDismissed || result.isConfirmed) {
+              goPage()
+            }
+          } else {
+            setLoading(false)
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: response?.data?.msg,
+              footer: '<a href="#">Why do I have this issue?</a>',
+            });
+          }
         }
-      }else {
-        setLoading(false)
-          Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: response?.data?.msg,
-          footer: '<a href="#">Why do I have this issue?</a>',
-        });
       }
+
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 
-  const listTypeAccount = ["Quản trị viên", "Giảng viên/nhân viên", "Sinh viên"]
+  const listTypeAccount = ["Giảng viên/nhân viên", "Sinh viên"]
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center" onKeyDown={(e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        getPass();
+      }
+    }}>
       {
         loading && (
           <div>
@@ -81,7 +99,7 @@ const ForgotPass = () => {
         )
       }
       <div class="bg-cover bg-center h-screen w-full flex ">
-        <div className="w-1/3 min-h-screen object-cover relative bg-primary">
+        <div className="md:block hidden w-2/3 min-h-screen object-cover relative bg-primary">
           <img src={score} alt="" className="sm:h-[200px] sm:w-[200px] absolute top-0 left-0 w-[100px] h-[100]px" />
           <img src={student} alt="" className="h-screen absolute right-0" />
           <span className="absolute left-2 bottom-2 text-gray-400 text-[11px] flex flex-col items-center justify-center">
@@ -89,9 +107,9 @@ const ForgotPass = () => {
             <p>Developed by Black Team.</p>
           </span>
         </div>
-        <section class="bg-gray-50 min-h-screen w-2/3 flex items-center justify-center">
-          <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
-            <div class="xl:w-2/3 px-8 xl:px-16 w-1/2">
+        <section class="bg-gray-50 min-h-screen w-full flex items-center justify-center">
+          <div class="bg-gray-100 flex rounded-2xl shadow-lg xl:max-w-3xl w-full mx-20 p-5 items-center">
+            <div class="xl:w-2/3 px-8 xl:px-16 w-full">
               <h2 class="font-bold text-2xl text-[#002D74]">Khôi phục mật khẩu</h2>
               <p class="text-xs mt-4 text-[#002D74]">Bạn quên mật khẩu? Lấy lại</p>
 
@@ -123,13 +141,16 @@ const ForgotPass = () => {
               </div>
 
               <form action="" class="flex flex-col gap-4">
-                <input class="p-2 mt-4 rounded-lg border" type="email" name="email" placeholder="Email" value={data.email} onChange={(e) => setData(prev => ({ ...prev, email: e.target.value }))} />
+                <input class="p-2 mt-4 rounded-lg border" type="email" name="email" placeholder="Email" value={data.email} onChange={(e) => setData(prev => ({ ...prev, email: e.target.value }))} onFocus={() => setErr('')} />
+                {
+                  err !== '' && <small className="text-red-600 italic">Thông tin không đúng định dạng.</small>
+                }
               </form>
 
               <div className="w-full flex items-center justify-center">
-                <button className="bg-[#002D74] mt-3 min-w-full rounded-xl text-white py-2 hover:scale-105 duration-300" onClick={() => {
-                 setLoading(true);
-                 getPass(); 
+                <button className="bg-[#002D74] mt-3 min-w-full rounded-xl text-white py-2 hover:scale-105 duration-300" onClick={(e) => {
+                  e.preventDefault();
+                  getPass();
                 }}>Submit</button>
               </div>
 

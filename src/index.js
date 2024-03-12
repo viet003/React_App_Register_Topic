@@ -6,6 +6,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import reduxStore from './redux';
 import { BrowserRouter } from 'react-router-dom'
+import { registerLicense } from '@syncfusion/ej2-base';
+
+
+// key syncfusion
+registerLicense(process.env.REACT_APP_SYNC_KEY);
+
 
 //import reportWe bVitals from './reportWebVitals';
 

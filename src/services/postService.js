@@ -1,10 +1,10 @@
 import axiosConfig from "../axiosConfig";
-
-export const apiLogin = (payload) => new Promise((resolve, reject) => {
+// lấy thông tin bài đăng
+export const apiGetPost = (payload) => new Promise((resolve, reject) => {
     try {
         const response = axiosConfig({
-            method: 'post',
-            url: 'api/auth/login',
+            method: 'get',
+            url: 'api/auth/getpost',
             data: payload
         })
         resolve(response)
@@ -12,12 +12,12 @@ export const apiLogin = (payload) => new Promise((resolve, reject) => {
         reject(error)
     }
 })
-
-export const apiRegister = (payload) => new Promise((resolve, reject) => {
+// thêm thông tin bài đăng
+export const apiCreatePost = (payload) => new Promise((resolve, reject) => {
     try {
         const response = axiosConfig({
             method: 'post',
-            url: 'api/auth/register',
+            url: 'api/auth/createpost',
             data: payload
         })
         resolve(response)
@@ -25,12 +25,12 @@ export const apiRegister = (payload) => new Promise((resolve, reject) => {
         reject(error)
     }
 })
-
-export const apiGetPass = (payload) => new Promise((resolve, reject) => {
+// xóa thông tin bài đăng
+export const apiDeletePost = (payload) => new Promise((resolve, reject) => {
     try {
         const response = axiosConfig({
-            method: 'post',
-            url: 'api/auth/getpass',
+            method: 'delete',
+            url: 'api/auth/deletepost',
             data: payload
         })
         resolve(response)

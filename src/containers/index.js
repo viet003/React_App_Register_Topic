@@ -8,4 +8,8 @@ export { default as Home } from "./Home"
 export { default as Account } from "./AdminPages/Account"
 export { default as Topic } from "./LecturerPages/Topics"
 export { default as User } from "./AdminPages/User"
+export { default as Modules } from "./Modules"
+export { default as Peoples } from "./Peoples"
+export { default as Announcements } from "./Announcement"
+export { default as Comments } from "./Comments"
 // file export

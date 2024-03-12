@@ -1,23 +1,35 @@
 import React from "react";
 import logo from "../assets/admin.jpg"
-import { BiUser } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
+import * as CryptoJS from '../utils/crypto'
 
 const UserProfile = ({ toggle }) => {
 
     const { token } = useSelector(state => state.auth)
     const id = token ? jwtDecode(token).id : "No user"
+    const name = token ? jwtDecode(token).name : "Admin"
+    const type = token ? jwtDecode(token).type : "Admin"
+    // console.log(jwtDecode(token).name)
     return (
-        <div className={`flex items-center gap-5 ${toggle ? "bg-none transition-all " : "bg-white rounded-xl p-2"}`}>
-            <div className="min-w-[3.5rem] h-[3rem] flex items-center justify-around">
+        <div className={`flex items-center gap-5 py-3 rounded-xl ${toggle ? "bg-none transition-all " : "bg-white"}`}>
+            <div className="min-w-[3.5rem] h-[3rem] flex items-center justify-around overflow-hidden">
                 <img src={logo} alt="" className={`w-[3rem] h-full rounded-full object-cover ${toggle ? "text-white transition-all" : "text-black"}`} />
             </div>
-            <div className={toggle ? "opacity-0 transition-opacity text-white" : "opacity-100 delay-200 duration-200"}>
-                <h3 className="text-xl">Admin</h3>
-                <span className="text-[0.75rem] opacity-60">
+            <div className={toggle ? "opacity-0 transition-opacity text-white" : "opacity-100 duration-300"}>
+                {
+                    type !== "Quản trị viên" && (
+                        <p className="text-sm overflow-hidden whitespace-no-wrap overflow-ellipsis">{CryptoJS.decrypted(name).split(' ').slice(2).length > 1 ? CryptoJS.decrypted(name).split(' ').slice(2).join(' ') : CryptoJS.decrypted(name).split(' ').slice(1).join(' ')}</p>
+                    )
+                }
+                {
+                    type === "Quản trị viên" && (
+                        <p className="text-sm overflow-hidden whitespace-no-wrap overflow-ellipsis">Admin</p>
+                    )
+                }
+                <p className="text-[0.75rem] opacity-60 mt-1">
                     {id}
-                </span>
+                </p>
             </div>
         </div>
     );
