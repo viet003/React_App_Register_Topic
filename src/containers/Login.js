@@ -91,6 +91,7 @@ const Login = function () {
   const handleSubmit = async () => {
     let valid = validate(payload)
     if (valid === 0) {
+      setLoading(true)
       const response = await dispatch(actions.login(payload))
       if (response?.status === 200 && response?.data?.err === 0) {
         setLoading(false)
