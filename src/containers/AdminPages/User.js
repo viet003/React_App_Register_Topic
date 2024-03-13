@@ -213,17 +213,18 @@ const User = () => {
         if (state.action === "edit") {
             // console.log(state)
             let inval = validate(state.data);
-            if (inval === 0 && state.data.isActive !== null) {
+            if (inval === 0) {
                 // Xử lý khi dữ liệu hợp lệ
-                await updateUser({
-                    ...state.data,
-                    type: value,
-                    name: CryptoJS.encrypted(state.data.name),
-                    dob: CryptoJS.encrypted(moment(new Date(state.data.dob)).format('DD/MM/YYYY').toString()),
-                    major: CryptoJS.encrypted(state.data.major),
-                    department: CryptoJS.encrypted(state.data.department),
-                    clas: CryptoJS.encrypted(state.data.class)
-                });
+                // await updateUser({
+                //     ...state.data,
+                //     type: value,
+                //     name: CryptoJS.encrypted(state.data.name),
+                //     dob: CryptoJS.encrypted(moment(new Date(state.data.dob)).format('DD/MM/YYYY').toString()),
+                //     major: CryptoJS.encrypted(state.data.major),
+                //     department: CryptoJS.encrypted(state.data.department),
+                //     clas: CryptoJS.encrypted(state.data.class)
+                // });
+                console.log(state.data.isActive)
                 // fetchData(value)
             } else {
                 // Hiển thị thông báo lỗi cho người dùng
@@ -234,7 +235,7 @@ const User = () => {
                     footer: '<a href="#">Why do I have this issue?</a>',
                     showConfirmButton: true,
                 });
-                if(grid) {
+                if (grid) {
                     grid.dataSource = userData
                 }
             }
@@ -404,9 +405,9 @@ const User = () => {
                                 return CryptoJS.decrypted(props.department)
                             }}
                         />
-                        <ColumnDirective field="isActive" headerText="Trạng thái" textAlign="Left"
+                        <ColumnDirective field="isActive" headerText="Trạng thái" textAlign="Left" type="boolean"
                             template={(props) => {
-                                return props.isActive === 1 ? 'Hoạt động' : 'Dừng hoạt động';
+                                return props.isActive ? 'Hoạt động' : 'Dừng hoạt động';
                             }}
                         />
                         <ColumnDirective field="createdAt" headerText="Ngày tạo" textAlign="Left" format={'dd/MM/yyyy'} type="date" />

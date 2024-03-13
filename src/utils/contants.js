@@ -1,14 +1,14 @@
 export const path = {
     MAIN : "/main",
     LOGIN : "/",
-    FORGOTPASS: "/quen-mat-khau",
-    PROFILE: "thong-tin-ca-nhan",
-    LOOKUP: "tra-cuu",
-    COURSE: "dang-ky-lop",
+    FORGOTPASS: "/forgetpass",
+    PROFILE: "profile",
+    LOOKUP: "lookup",
+    COURSE: "course",
     HOME: "home",
-    ACCOUNT : "tai-khoan",
-    TOPIC: "de-tai",
-    USER: "nguoi-dung",
+    ACCOUNT : "account",
+    TOPIC: "topic",
+    USER: "user",
     ANNOUNCEMENT : "announcements",
     PEOPLES: "peoples"
 }

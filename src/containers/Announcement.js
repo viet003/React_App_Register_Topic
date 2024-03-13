@@ -10,8 +10,11 @@ import user from "../assets/user.jpg"
 import { useNavigate } from "react-router-dom";
 import { MdOutlineClose } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { Backdrop, CircularProgress } from '@mui/material';
+import { useTitle } from "react-use"
 
 const Announcements = () => {
+    useTitle('Announcements')
     const navigate = useNavigate()
     const { topicid } = useParams();
     const [search, setSearch] = useState('')
@@ -111,7 +114,7 @@ const Announcements = () => {
             fetchData()
         }
     }
-    // 
+    // lấy thông báo
     const getAllAnnouncement = async () => {
         setLoading(true);
         const response = await announcementService.apiGetAllAnnouncements({ topicid })
@@ -125,6 +128,7 @@ const Announcements = () => {
                 showConfirmButton: true,
             });
         } else {
+            setLoading(false)
             // console.log(response?.data?.data)
             return response?.data?.data
         }
@@ -163,6 +167,18 @@ const Announcements = () => {
 
     return (
         <div className="mt-8 w-full">
+            {
+                loading && (
+                    <div>
+                        <Backdrop
+                            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                            open={loading}
+                        >
+                            <CircularProgress color="inherit" />
+                        </Backdrop>
+                    </div>
+                )
+            }
             {isAdd && (
                 <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
                     <div className="relative">

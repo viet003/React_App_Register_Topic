@@ -31,19 +31,18 @@ const UserDialog = (props) => {
                 <div className="">
                     <TextBoxComponent style={{ width: "300px" }} id='department' value={CryptoJS.decrypted(props.department)} placeholder="Khoa" floatLabelType="Auto" />
                 </div>
-                <div className="">
-                    <DropDownListComponent
-                        style={{ width: "300px" }}
-                        id='isActive'
-                        placeholder="Trạng thái"
-                        floatLabelType="Auto"
-                        dataSource={[
-                            { text: 'Hoạt động', value: 1 },
-                            { text: 'Dừng hoạt động', value: 0 }
-                        ]}
-                        fields={{ text: 'text', value: 'value' }}
-                    />
-                </div>
+                <DropDownListComponent
+                    style={{ width: "300px" }}
+                    id="isActive"
+                    placeholder="Trạng thái"
+                    floatLabelType="Auto"
+                    dataSource={[
+                        { text: 'Hoạt động', value: true },
+                        { text: 'Dừng hoạt động', value: false }
+                    ]}
+                    fields={{ text: 'text', value: 'value' }}
+                    value={props.isActive}
+                />
             </div>
         </div>
     )

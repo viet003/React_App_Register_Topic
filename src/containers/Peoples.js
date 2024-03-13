@@ -172,13 +172,13 @@ const Peoples = () => {
                             <ColumnDirective field="name" headerText="Nhóm" textAlign="Left" />
                             <ColumnDirective field="isadded" headerText="Trạng thái" textAlign="Left"
                                 template={(props) => {
-                                    return props.isadded === 1 ? 'Đã duyệt' : 'Chờ xét duyệt';
+                                    return props.isadded ? 'Đã duyệt' : 'Chờ xét duyệt';
                                 }}
                             />
                             {
                                 token && type === 'Giảng viên/nhân viên' && (
                                     <ColumnDirective headerText="Actions" textAlign="Center" width='150px' template={(props) => (
-                                        props.isadded !== 1 ? (
+                                        !props.isadded ? (
                                             <div className="flex gap-2 text-gray-200">
                                                 <button onClick={() => acceptStudent(props)} className="bg-primary rounded-xl px-2 py-1 hover:text-orange-300">Accept</button>
                                                 <button onClick={() => denyStudent(props)} className="bg-primary rounded-xl px-2 py-1 hover:text-orange-300">Deny</button>

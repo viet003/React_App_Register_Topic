@@ -389,7 +389,7 @@ const Account = () => {
                             value === 'Quản trị viên' && (
                                 <ColumnDirective field="isactive" headerText="Trạng thái" textAlign="Left"
                                     template={(props) => {
-                                        return props.isactive === 1 ? 'Hoạt động' : 'Dừng hoạt động';
+                                        return props.isactive == 1 ? 'Hoạt động' : 'Dừng hoạt động';
                                     }}
                                 />
                             )
