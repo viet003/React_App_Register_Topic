@@ -29,8 +29,8 @@ const Course = () => {
     // get topic
     const getTopic = async () => {
         if (token) {
-            const response = await topicService.apiGetTopic({ userid: userid, schoolyear: value, type: type });
             setLoading(true);
+            const response = await topicService.apiGetTopic({ userid: userid, schoolyear: value, type: type });
             if (response.status !== 200) {
                 setLoading(false)
                 Swal.fire({

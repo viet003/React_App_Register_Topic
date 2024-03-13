@@ -30,8 +30,8 @@ const Lookup = () => {
     //
     const getTopic = async () => {
         if (token) {
+            setLoading(true);   
             const response = await groupService.apiGetGroup({ studentid: userid, schoolyear: value });
-            setLoading(true);
             if (response.status !== 200 || response.data.err !== 0) {
                 setLoading(false)
                 Swal.fire({
