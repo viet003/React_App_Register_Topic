@@ -7,7 +7,6 @@ import { IoIosSend } from "react-icons/io";
 import { jwtDecode } from "jwt-decode";
 import User from "../assets/user.jpg"
 import * as CryptoJS from "../utils/crypto";
-<<<<<<< HEAD
 import { MdOutlineClose } from "react-icons/md";
 import { Backdrop, CircularProgress } from '@mui/material';
 import { useTitle } from "react-use"
@@ -18,13 +17,6 @@ const Comments = () => {
     const { id } = useParams()
     const { token } = useSelector(state => state.auth)
     const [loading, setLoading] = useState(true)
-=======
-
-
-const Comments = () => {
-    const { id } = useParams()
-    const { token } = useSelector(state => state.auth)
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
     const userid = token ? jwtDecode(token).id : ''
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     const [commentData, setCommentData] = useState([])
@@ -32,10 +24,7 @@ const Comments = () => {
     const [value, setValue] = useState('');
     //
     const getComments = async () => {
-<<<<<<< HEAD
         setLoading(true)
-=======
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
         const response = await commentService.apiGetAllComments({ id: atob(id) })
         if (response.status !== 200) {
             Swal.fire({
@@ -46,20 +35,12 @@ const Comments = () => {
                 showConfirmButton: true,
             });
         } else {
-<<<<<<< HEAD
             setLoading(false)
             return response.data.data
         }
     }
     // tạo comments
     const createComment = async (content) => {
-=======
-            return response.data.data
-        }
-    }
-    //
-    const createCommnets = async (content) => {
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
         if (content !== '') {
             const response = await commentService.apiCreateComment({ content: content.replace(urlRegex, '<a href="$1" target="_blank">$1</a>').replace(/\n/g, '<br>'), userid: userid, announcementid: atob(id) })
             if (response.status !== 200) {
@@ -67,11 +48,7 @@ const Comments = () => {
                     icon: "error",
                     title: "Oops...",
                     text: response.data.msg ? response.data.msg : "",
-<<<<<<< HEAD
                     footer: '<a href="#">Why do I have this issue?</a>',
-=======
-                    footer: '<a href="#">Why do I have this issuee?</a>',
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
                     showConfirmButton: true,
                 });
             } else {
@@ -82,7 +59,6 @@ const Comments = () => {
             setValue('')
         }
     }
-<<<<<<< HEAD
     // xóa comments
     const deleteComment = async (id) => {
         setLoading(true)
@@ -100,8 +76,6 @@ const Comments = () => {
             fetchData();
         }
     }
-=======
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
     //
     const fetchData = async () => {
         const commentDatas = await getComments()
@@ -126,7 +100,6 @@ const Comments = () => {
 
     return (
         <div className="w-full min-w-[700px]">
-<<<<<<< HEAD
             {
                 loading && (
                     <div>
@@ -139,8 +112,6 @@ const Comments = () => {
                     </div>
                 )
             }
-=======
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
             <div className="mt-5 w-full max-h-[440px] overflow-y-scroll">
                 <div className="border-gray-300 border">
                     <div className="w-full bg-gray-100 h-[30px]" />
@@ -170,11 +141,7 @@ const Comments = () => {
                         const formattedDate = new Date(e.createdAt).toLocaleString();
                         return (
                             <div className="flex w-full mt-5 justify-end ">
-<<<<<<< HEAD
                                 <div className="relative flex flex-col w-[80%] border border-gray-300 p-4 rounded-xl bg-gray-100 gap-2">
-=======
-                                <div className="flex flex-col w-[80%] border border-gray-300 p-4 rounded-xl bg-gray-100 gap-2">
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
                                     <div className="flex justify-between items-center">
                                         <div className="flex items-center">
                                             <img className="h-[50px] w-[50px] rounded-full " src={User} />
@@ -190,7 +157,6 @@ const Comments = () => {
                                     <div className=" min-h-[40px] flex items-center px-10 rounded-xlpy-1 bg-gray-50 rounded-xl">
                                         <div className="text-[14px]" dangerouslySetInnerHTML={{ __html: e.content }} />
                                     </div>
-<<<<<<< HEAD
                                     {
                                         userid === e.userid && (
                                             <MdOutlineClose onClick={() => {
@@ -198,8 +164,6 @@ const Comments = () => {
                                             }} className="absolute top-2 right-2 text-[20px] cursor-pointer" />
                                         )
                                     }
-=======
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
                                 </div>
                             </div>
                         )
@@ -214,11 +178,7 @@ const Comments = () => {
                         className="outline-none w-full h-[40px] resize-none py-2 pr-10 pl-10 rounded-xl text-[15px]" placeholder="Comment . . . . ."
                         style={{ overflowY: 'hidden' }}
                     />
-<<<<<<< HEAD
                     <IoIosSend onClick={() => { createComment(value) }} className="text-[30px] mr-3 h-[30px] cursor-pointer w-[30px] rounded-full hover:text-white hover:bg-primary" />
-=======
-                    <IoIosSend onClick={() => { createCommnets(value) }} className="text-[30px] mr-3 h-[30px] cursor-pointer w-[30px] rounded-full hover:text-white hover:bg-primary" />
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
                 </div>
             </div>
         </div>

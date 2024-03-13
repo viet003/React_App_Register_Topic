@@ -10,16 +10,11 @@ import user from "../assets/user.jpg"
 import { useNavigate } from "react-router-dom";
 import { MdOutlineClose } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-<<<<<<< HEAD
 import { Backdrop, CircularProgress } from '@mui/material';
 import { useTitle } from "react-use"
 
 const Announcements = () => {
     useTitle('Announcements')
-=======
-
-const Announcements = () => {
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
     const navigate = useNavigate()
     const { topicid } = useParams();
     const [search, setSearch] = useState('')
@@ -92,11 +87,7 @@ const Announcements = () => {
                     icon: "error",
                     title: "Oops...",
                     text: response.data.msg ? response.data.msg : "",
-<<<<<<< HEAD
                     footer: '<a href="#">Why do I have this issue?</a>',
-=======
-                    footer: '<a href="#">Why do I have this issuee?</a>',
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
                     showConfirmButton: true,
                 });
             } else {
@@ -123,11 +114,7 @@ const Announcements = () => {
             fetchData()
         }
     }
-<<<<<<< HEAD
     // lấy thông báo
-=======
-    // 
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
     const getAllAnnouncement = async () => {
         setLoading(true);
         const response = await announcementService.apiGetAllAnnouncements({ topicid })
@@ -141,10 +128,7 @@ const Announcements = () => {
                 showConfirmButton: true,
             });
         } else {
-<<<<<<< HEAD
             setLoading(false)
-=======
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
             // console.log(response?.data?.data)
             return response?.data?.data
         }
@@ -183,7 +167,6 @@ const Announcements = () => {
 
     return (
         <div className="mt-8 w-full">
-<<<<<<< HEAD
             {
                 loading && (
                     <div>
@@ -196,8 +179,6 @@ const Announcements = () => {
                     </div>
                 )
             }
-=======
->>>>>>> c83f7778d40afc35819fea7fad76a0889d8bc914
             {isAdd && (
                 <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
                     <div className="relative">
