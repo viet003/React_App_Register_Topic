@@ -117,12 +117,12 @@ const Peoples = () => {
     // tìm kiếm
     const searchByWord = (value) => {
         const newdata = studentData.filter((e) => e.studentid.includes(value));
-        if(grid){
-            if(value !== '') {
+        if (grid) {
+            if (value !== '') {
                 grid.dataSource = newdata
             } else {
                 grid.dataSource = studentData
-            } 
+            }
         }
     }
     useEffect(() => {
@@ -152,7 +152,11 @@ const Peoples = () => {
                             }} />
                             <GoSearch />
                         </div>
-                        <button onClick={() => { setDel(prev => !prev); }} class="ml-5  w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100 ">Xóa</button>
+                        {
+                            type !== "Sinh viên" && (
+                                <button onClick={() => { setDel(prev => !prev); }} class="ml-5  w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100 ">Xóa</button>
+                            )
+                        }
                     </div>
                 }
                 <div className="mt-8 min-w-[600px]">
