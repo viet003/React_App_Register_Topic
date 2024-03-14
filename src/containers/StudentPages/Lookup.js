@@ -128,7 +128,7 @@ const Lookup = () => {
                         <input type="text" class="m-auto w-full outline-none text-[13px]" placeholder="Tìm kiếm..." value={search} onChange={(e) => setSearch(e.target.value)} />
                         <GoSearch className="" />
                     </div>
-                    <div className="relative flex flex-col items-center py-2 w-[130px]xl:w-[300px] rounded-lg" onClick={() => setOpen((prev) => !prev)}>
+                    <div className="relative flex flex-col items-center py-2 w-[130px] xl:w-[300px] rounded-lg" onClick={() => setOpen((prev) => !prev)}>
                         <div className="w-full relative">
                             <button className="p-4 z-0 h-[35px] flex w-full items-center justify-between text-[13px] rounded-md tracking-wider border-[1px] border-gray-300  hover:border-primary hover:text-primary transition-all duration-200">
                                 {value}
