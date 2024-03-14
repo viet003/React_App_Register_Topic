@@ -60,6 +60,7 @@ const Lookup = () => {
             cancelButtonText: "Đóng"
         }).then((result) => {
             if (result.isConfirmed) {
+                setLoading(true)
                 new Promise((resolve, reject) => {
                     const response = groupService.apiRemoveFromGroup({ studentid: userid, topicid: id })
                     resolve(response)
@@ -79,6 +80,7 @@ const Lookup = () => {
                             text: "Vui lòng quay lại trang đăng ký để tiếp tục đăng ký.",
                             icon: "success"
                         });
+                        setLoading(false)
                         fetchData()
                     }
                 })              
