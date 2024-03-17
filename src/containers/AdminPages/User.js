@@ -282,7 +282,7 @@ const User = () => {
     }, []);
     //
     return (
-        <div className="h-full w-full">
+        <div className="h-full w-full bg-gray-50">
             {
                 loading && (
                     <div>

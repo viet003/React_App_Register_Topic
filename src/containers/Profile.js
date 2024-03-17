@@ -51,7 +51,7 @@ const Profile = () => {
     }, [])
     //
     return (
-        <div className="w-full xl:border rounded-lg h-[500px] p-10">
+        <div className="w-full xl:border rounded-lg h-[500px] p-10 bg-gray-50">
             {loading && (
                 <div>
                     <Backdrop

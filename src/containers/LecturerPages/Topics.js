@@ -229,7 +229,7 @@ const Topic = () => {
     };
 
     return (
-        <div className="h-full flex justify-between">
+        <div className="h-full flex justify-between bg-gray-50">
             <div className="xl:w-4/6 w-full">
                 {
                     loading && (

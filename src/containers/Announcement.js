@@ -166,7 +166,7 @@ const Announcements = () => {
     };
 
     return (
-        <div className="mt-8 w-full">
+        <div className="mt-8 w-full ">
             {
                 loading && (
                     <div>

@@ -99,7 +99,7 @@ const Comments = () => {
     }, [])
 
     return (
-        <div className="w-full min-w-[700px]">
+        <div className="w-full min-w-[700px] ">
             {
                 loading && (
                     <div>

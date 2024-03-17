@@ -179,7 +179,7 @@ const Home = () => {
                                 <Header content={content} getValue={changeValue} setChange={setChange} />
                             </div>
                             <div className="h-[50px] w-full z-50"></div>
-                            <div className="w-full py-4 px-6 z-0 bg-gray-50">
+                            <div className="w-full py-4 px-6 z-0">
                                 <Outlet />
                             </div>
                             <div className={`fixed md:hidden right-0 h-[50px] 2xl:rounded-r-xl w-full lg:w-[calc(100%-13rem)] bottom-[30px] xl:bottom-[35px] sm:bottom-[50px] bg-gray-100 z-40 ${toggle ? "transition-all duration-300  lg:w-[calc(100%-76.8px)] " : "transition-all lg:w-[calc(100%-13rem)] duration-300 "}`}>

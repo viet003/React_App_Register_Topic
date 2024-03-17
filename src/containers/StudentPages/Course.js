@@ -102,7 +102,7 @@ const Course = () => {
         setCurrentPage(page);
     };
     return (
-        <div className="w-full flex px-1 justify-between">
+        <div className="w-full flex px-1 justify-between bg-gray-50">
             <div className="w-full xl:w-4/6 ">
                 {
                     loading && (

@@ -109,7 +109,7 @@ const Lookup = () => {
         setCurrentPage(page);
     };
     return (
-        <div className="h-full flex justify-between">
+        <div className="h-full flex justify-between bg-gray-50">
             <div className="w-full xl:w-4/6 ">
                 {
                     loading && (
