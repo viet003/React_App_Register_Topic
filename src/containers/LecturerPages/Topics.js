@@ -323,6 +323,13 @@ const Topic = () => {
                     </div>
                 </div>
                 <div className="w-full z-10  pt-10">
+                    {
+                        topicData.length === 0 && (
+                            <div className="flex justify-center items-center opacity-80 text-gray-600">
+                                <p>Không tìm thấy dữ liệu.</p>
+                            </div>
+                        )
+                    }
                     <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
                         {topicData?.filter((item) => {
                             return item.description.toLowerCase().includes(search.toLowerCase());
