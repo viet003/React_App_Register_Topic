@@ -29,7 +29,7 @@ const ChangePassForm = (props) => {
     const dispatch = useDispatch()
 
     return (
-        <div onClick={conTroler} className="flex justify-end items-center h-full w-full">
+        <div onClick={conTroler} className="flex justify-end items-center h-full w-full border-b">
             <div className="hover:text-orange-600 flex w-[300px] justify-end items-center h-full text-primary cursor-pointer">
                 <img src={user} alt="" className={`w-[41px] h-[41px] rounded-full object-cover`} />
                 <p className="text-primary cursor-pointer text-[13px] mx-2">{email}</p>
