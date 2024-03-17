@@ -19,6 +19,7 @@ const Home = () => {
     const [content, setContent] = useState("Home")
     const [openMenu, setOpenMenu] = useState(false)
     const [change, setChange] = useState(false)
+    const [loading, setLoading] = useState(false)
     const { isLoggedIn } = useSelector(state => state.auth)
     const { token } = useSelector(state => state.auth)
     const [invalidFields, setInvalidFields] = useState([])
@@ -101,8 +102,10 @@ const Home = () => {
     const handleSubmit = async () => {
         let inval = validate(payload);
         if (inval === 0) {
+            setLoading(true)
             const response = await apiChangePass(payload)
             if (response?.status === 200 && response?.data?.err === 0) {
+                setLoading(false)
                 const result = await Swal.fire({
                     title: "Succeeded!",
                     text: response.data.msg ? response.data.msg : "",
@@ -114,6 +117,7 @@ const Home = () => {
                     setChange(false)
                 }
             } else {
+                setLoading(false)
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -126,6 +130,18 @@ const Home = () => {
     }
     return (
         <div className="w-full h-screen">
+            {loading && (
+                <div>
+                    <Backdrop
+                        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                        open={loading}
+                        onClick={() => navigate(path.LOGIN)} // Đặt hàm navigate vào trong một hàm gọi lại
+                    >
+                        <CircularProgress color="inherit" />
+                    </Backdrop>
+                </div>
+            )}
+
             {(
                 <div>
                     <Backdrop
@@ -140,7 +156,14 @@ const Home = () => {
 
             {change && (
                 <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
-                    <div className="relative">
+                    <div className="relative"
+                        onKeyDown={(e) => {
+                            // console.log(e.key)
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                handleSubmit()
+                            }
+                        }}>
                         <div className="bg-gray-400 opacity-70 fixed inset-0 z-90" onClick={() => { setChange(prev => !prev); cancle(); setInvalidFields([]) }}></div>
                         <div className="flex justify-start gap-2 items-center  flex-col bg-white w-full sm:w-[400px]  z-70 rounded-xl relative px-3">
                             <div className="inset-0 flex justify-center items-start text-[25px] text-primary">Đổi mật khẩu</div>
@@ -183,7 +206,7 @@ const Home = () => {
                                 <Outlet />
                             </div>
                             <div className={`fixed md:hidden right-0 h-[50px] 2xl:rounded-r-xl w-full lg:w-[calc(100%-13rem)] bottom-[30px] xl:bottom-[35px] sm:bottom-[50px] bg-gray-100 z-40 ${toggle ? "transition-all duration-300  lg:w-[calc(100%-76.8px)] " : "transition-all lg:w-[calc(100%-13rem)] duration-300 "}`}>
-                                <ChangePassForm content={content} getValue={changeValue} setChange={setChange}/>
+                                <ChangePassForm content={content} getValue={changeValue} setChange={setChange} />
                             </div>
                             <div className="h-[80px] sm:h-[100px] md:h-[50px] w-full"></div>
                             <div className={`fixed right-0 h-[30px] xl:h-[35px] sm:h-[50px] 2xl:rounded-r-xl w-full lg:w-[calc(100%-13rem)] bottom-0 bg-gray-100 z-40 ${toggle ? "transition-all duration-300  lg:w-[calc(100%-76.8px)] " : "transition-all lg:w-[calc(100%-13rem)] duration-300 "}`}>

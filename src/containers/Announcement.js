@@ -181,7 +181,13 @@ const Announcements = () => {
             }
             {isAdd && (
                 <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
-                    <div className="relative">
+                    <div className="relative" onKeyDown={(e) => {
+                        // console.log(e.key)
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            handleSubmit()
+                        }
+                    }}>
                         <div className="bg-gray-400 opacity-70 fixed inset-0 z-60" onClick={(e) => { setIsAdd(prev => !prev); cancle(); setInvalidFields([]) }}></div>
                         <div className="flex justify-start gap-5 items-center  flex-col bg-white w-[400px]  sm:w-[600px]  z-70 rounded-xl relative p-3">
                             <div className=" inset-0 flex justify-center items-start text-[25px] text-primary">Tạo thông báo</div>
@@ -202,7 +208,13 @@ const Announcements = () => {
             )}
             {change && (
                 <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
-                    <div className="relative">
+                    <div className="relative" onKeyDown={(e) => {
+                        // console.log(e.key)
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            editAnnouncement()
+                        }
+                    }}>
                         <div className="bg-gray-400 opacity-70 fixed inset-0 z-60" onClick={(e) => { setChange(prev => !prev); cancle(); setInvalidFields([]) }}></div>
                         <div className="flex justify-start gap-5 items-center  flex-col bg-white w-full  sm:w-[600px]  z-70 rounded-xl relative p-3">
                             <div className=" inset-0 flex justify-center items-start text-[25px] text-primary">Thông báo</div>

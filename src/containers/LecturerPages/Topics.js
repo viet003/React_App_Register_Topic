@@ -245,7 +245,13 @@ const Topic = () => {
                 {
                     add && (
                         <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
-                            <div className="relative">
+                            <div className="relative" onKeyDown={(e) => {
+                                // console.log(e.key)
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    handleSubmit()
+                                }
+                            }}>
                                 <div className="bg-gray-400 opacity-70 fixed inset-0 z-60" onClick={() => { setAdd(prev => !prev); cancle(); setInvalidFields([]) }}></div>
                                 <div className="flex justify-start gap-2 items-center  flex-col bg-white w-full  sm:w-[400px]  z-70 rounded-xl relative p-3">
                                     <div className=" inset-0 flex justify-center items-start text-[25px] text-primary">Thông tin đề tài</div>
@@ -265,11 +271,17 @@ const Topic = () => {
                 {
                     change && (
                         <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
-                            <div className="relative">
+                            <div className="relative" onKeyDown={(e) => {
+                                // console.log(e.key)
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    editTopic();
+                                }
+                            }}>
                                 <div className="bg-gray-400 opacity-70 fixed inset-0 z-60" onClick={() => { setChange(prev => !prev); cancle(); setInvalidFields([]) }}></div>
                                 <div className="flex justify-start gap-2 items-center  flex-col bg-white w-full  sm:w-[400px]  z-70 rounded-xl relative p-3">
                                     <div className=" inset-0 flex justify-center items-start text-[25px] text-primary">Thông tin đề tài</div>
-                                    <InputForm label={'ID đề tài'} value={payload.id} setValue={setPayload} type={'id'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} />
+                                    <InputForm label={'ID đề tài'} value={payload.id} setValue={setPayload} type={'id'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} read-only/>
                                     <InputForm label={'Tiêu đề'} value={payload.title} setValue={setPayload} type={'title'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} />
                                     <InputForm label={'Mô tả'} value={payload.description} setValue={setPayload} type={'description'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} />
                                     <InputForm label={'Số lượng'} value={payload.quantity} setValue={setPayload} type={'quantity'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} />

@@ -177,8 +177,15 @@ const Comments = () => {
                         onChange={handleChange}
                         className="outline-none w-full h-[40px] resize-none py-2 pr-10 pl-10 rounded-xl text-[15px]" placeholder="Comment . . . . ."
                         style={{ overflowY: 'hidden' }}
+                        onKeyDown={(e) => {
+                            // console.log(e.key)
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                createComment(value)
+                            }
+                        }}
                     />
-                    <IoIosSend onClick={() => { createComment(value) }} className="text-[30px] mr-3 h-[30px] cursor-pointer w-[30px] rounded-full hover:text-white hover:bg-primary" />
+                    <IoIosSend onClick={() => { createComment(value) }} className="text-[30px] mr-3 h-[30px] cursor-pointer w-[30px] rounded-full hover:text-white hover:bg-primary"/>
                 </div>
             </div>
         </div>

@@ -153,7 +153,12 @@ const Home = () => {
                     </div>
                 )}
                 {add && (
-                    <div className="fixed inset-0 flex justify-center items-center z-50 w-full">
+                    <div className="fixed inset-0 flex justify-center items-center z-50 w-full" onKeyDown={(e) => {
+                        // console.log(e.key)
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleSubmit()
+                        }}}>
                         <div className="relative">
                             <div className="bg-gray-400 opacity-70 fixed inset-0 z-60" onClick={() => { setAdd(prev => !prev); cancle(); setInvalidFields([]) }}></div>
                             <div className="flex justify-start gap-2 items-center  flex-col bg-white w-full  sm:w-[400px]  z-70 rounded-xl relative p-3">
@@ -162,7 +167,9 @@ const Home = () => {
                                 <InputForm label={'Mô tả'} value={payload.description} setValue={setPayload} type={'description'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} />
                                 <InputForm label={'Đường dẫn'} value={payload.link} setValue={setPayload} type={'link'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} />
                                 <InputForm label={'Người tạo'} value={payload.userid} setValue={setPayload} type={'userid'} keyx={'text'} invalidFields={invalidFields} setInvalidFields={setInvalidFields} />
-                                <button onClick={(e) => { e.preventDefault(); handleSubmit(); }} class=" w-full my-4 md:w-[100px] bg-[#002D74] rounded-xl text-white py-2 hover:text-orange-400 duration-100 h-[40px]">Thêm mới</button>
+                                <button  onClick={(e) => { e.preventDefault(); handleSubmit(); }} class=" w-full my-4 md:w-[100px] bg-[#002D74] rounded-xl text-white py-2 hover:text-orange-400 duration-100 h-[40px]">
+                                    Thêm mới
+                                </button>
                             </div>
                             <MdOutlineClose className="absolute top-2 right-2 text-[25px] cursor-pointer" onClick={() => { setAdd(prev => !prev); cancle(); setInvalidFields([]) }} />
                         </div>
