@@ -184,7 +184,7 @@ const Home = () => {
                         <div className="border-l-4 rounded-sm border-orange-500 my-4">
                             <p className="ml-4 text-primary">Tin tức</p>
                         </div>
-                        <div className="grid grid-cols-3 gap-10 ">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 ">
                             {postData?.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((element, index) => {
                                 let colorIndex = index % listColorsBg.length;
                                 // console.log(listColors[colorIndex])

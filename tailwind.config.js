@@ -14,6 +14,16 @@ module.exports = {
         bgr2: "rgb(98, 110, 123)",
         bgr3: "#18615B",        
       },
+      screens: {
+        'phone': '400px',
+        // => @media (min-width: 640px) { ... }
+  
+        'laptop': '1024px',
+        // => @media (min-width: 1024px) { ... }
+  
+        'desktop': '1280px',
+        // => @media (min-width: 1280px) { ... }
+      },
       backgroundImage: {
         'hero-pattern': "url('https://www.wallpaperflare.com/white-ceramic-mug-near-eyeglasses-with-black-frames-and-gray-laptop-computer-on-brown-table-wallpaper-zgbgu')",
       }

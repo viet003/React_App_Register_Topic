@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IoMdMenu } from "react-icons/io";
 import logo from "../assets/logo.png"
-import user from "../assets/admin.jpg"
+import admin from "../assets/admin.jpg"
+import user from "../assets/user.jpg"
 import { BiChevronDown } from "react-icons/bi";
 import { BiKey } from "react-icons/bi";
 import { IoIosLogOut } from "react-icons/io";
@@ -17,6 +18,7 @@ const Header = (props) => {
     const setChange = props.setChange;
     const { token } = useSelector(state => state.auth)
     const email = token ? jwtDecode(token).email : "No user"
+    const type = jwtDecode(token).type
     const conTrolMenu = () => {
         getValue();
     }
@@ -30,8 +32,8 @@ const Header = (props) => {
     const dispatch = useDispatch()
 
     return (
-        <div className="flex justify-between items-center h-full pl-6 z-100">
-            <div className="flex items-center text-primary">
+        <div className="flex md:justify-between justify-start items-center h-full pl-6 z-100">
+            <div className="flex items-center text-primary md:min-w-[0] min-w-[30%]">
                 <div className="lg:hidden">
                     <div className="flex items-center justify-start">
                         <IoMdMenu className="text-[2rem] xl:text-[2rem] cursor-pointer" onClick={conTrolMenu} />
@@ -48,9 +50,9 @@ const Header = (props) => {
             <div className="p-4 w-[250px]">
                 <img src={logo} alt="" className="h-full w-full" />
             </div>
-            <div onClick={conTroler} className="flex items-center h-full mr-2 text-primary relative cursor-pointer z-100">
+            <div onClick={conTroler} className="md:flex hidden items-center h-full mr-2 text-primary relative cursor-pointer z-100">
                 <div className="hover:text-orange-600 flex items-center h-full mr-2 text-primary cursor-pointer">
-                    <img src={user} alt="" className={`w-[41px] h-[41px] rounded-full object-cover sm:mr-4`} />
+                    <img src={type == 'Quản trị viên' ? admin : user} alt="" className={`w-[41px] h-[41px] rounded-full object-cover sm:mr-4`} />
                     <p className="text-primary cursor-pointer text-[13px] scale-x-0 w-0 sm:w-[57%] sm:scale-100 lg:text-[1rem] mx-2">{email}</p>
                     <BiChevronDown className={`${toggle ? "rotate-180 transition-all duration-100" : "transition-all"} mx-2 text-[20px] xl:text-[25px] cursor-pointer`} />
                 </div>

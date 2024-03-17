@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BiChevronLeft } from "react-icons/bi"
-import { SidebarData, UserProfile, Header, BottomBar } from "../components";
+import { SidebarData, UserProfile, Header, BottomBar, ChangePassForm } from "../components";
 import { Outlet } from "react-router-dom";
 import { MdOutlineClose } from "react-icons/md";
 import { useSelector } from "react-redux"
@@ -182,7 +182,10 @@ const Home = () => {
                             <div className="w-full py-4 px-6 z-0 bg-gray-50">
                                 <Outlet />
                             </div>
-                            <div className="h-[50px] w-full z-50"></div>
+                            <div className={`fixed md:hidden right-0 h-[50px] 2xl:rounded-r-xl w-full lg:w-[calc(100%-13rem)] bottom-[30px] xl:bottom-[35px] sm:bottom-[50px] bg-gray-100 z-40 ${toggle ? "transition-all duration-300  lg:w-[calc(100%-76.8px)] " : "transition-all lg:w-[calc(100%-13rem)] duration-300 "}`}>
+                                <ChangePassForm content={content} getValue={changeValue} setChange={setChange}/>
+                            </div>
+                            <div className="h-[80px] sm:h-[100px] md:h-[50px] w-full"></div>
                             <div className={`fixed right-0 h-[30px] xl:h-[35px] sm:h-[50px] 2xl:rounded-r-xl w-full lg:w-[calc(100%-13rem)] bottom-0 bg-gray-100 z-40 ${toggle ? "transition-all duration-300  lg:w-[calc(100%-76.8px)] " : "transition-all lg:w-[calc(100%-13rem)] duration-300 "}`}>
                                 <BottomBar />
                             </div>

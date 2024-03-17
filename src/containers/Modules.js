@@ -38,7 +38,7 @@ const Modules = () => {
     }, [])
 
     return (
-        <div className="flex w-full">
+        <div className="flex w-full min-w-[600px]">
             <div className={`flex-col gap-4 text-[#4A90E2] mt-2 mr-10 ${open ? "flex " : "hidden"} duration-200 delay-100`}>
                 <div className="text-[11px] italic text-gray-500 ">Học kỳ {infor?.schoolyear}</div>
                 <div className="hover:underline cursor-pointer">Home</div>

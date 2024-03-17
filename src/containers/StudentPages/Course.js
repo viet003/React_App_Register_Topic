@@ -116,12 +116,12 @@ const Course = () => {
                         </div>
                     )
                 }
-                <div className="flex justify-between items-center w-full">
-                    <div class="z-0 px-4 h-[35px] rounded-md tracking-wider border-[1px] w-[200px] border-gray-300 hover:border-primary hover:text-primary transition-all duration-200 cursor-pointer flex items-center">
+                <div className="flex flex-col phone:flex-row justify-between items-center w-full">
+                    <div class="z-0 px-4 h-[35px] rounded-md tracking-wider border-[1px] w-full phone:w-[200px] border-gray-300 hover:border-primary hover:text-primary transition-all duration-200 cursor-pointer flex items-center">
                         <input type="text" class="m-auto w-full outline-none text-[13px]" placeholder="Tìm kiếm..." value={search} onChange={(e) => setSearch(e.target.value)} />
                         <GoSearch className="" />
                     </div>
-                    <div className="relative flex flex-col items-center py-2 md:w-[300px] w-[130px] rounded-lg" onClick={() => setOpen((prev) => !prev)}>
+                    <div className="relative flex flex-col items-center py-2 phone:w-[150px] md:w-[300px] w-full rounded-lg" onClick={() => setOpen((prev) => !prev)}>
                         <div className="w-full relative">
                             <button className="p-4 z-0 h-[35px] flex w-full items-center justify-between text-[13px] rounded-md tracking-wider border-[1px] border-gray-300  hover:border-primary hover:text-primary transition-all duration-200">
                                 {value}

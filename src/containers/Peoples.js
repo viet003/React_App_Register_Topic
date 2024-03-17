@@ -159,7 +159,7 @@ const Peoples = () => {
                         }
                     </div>
                 }
-                <div className="mt-8 min-w-[600px]">
+                <div className="mt-8">
                     <GridComponent
                         dataSource={studentData}
                         ref={(g) => (grid = g)}

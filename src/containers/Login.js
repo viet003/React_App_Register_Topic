@@ -197,7 +197,7 @@ const Login = function () {
                   }
                 </div>
                 <div class="relative">
-                  <input class="p-2 rounded-lg border w-full" type="password" name="password" value={payload.password} placeholder="Password" onChange={(e) => setPayload(prev => ({ ...prev, password: e.target.value }))} onFocus={() => setInvalidFields(invalidFields.filter(i => i.name !== 'password'))} />
+                  <input class="p-2 rounded-lg border w-full" type="password" name="password" value={payload.password} placeholder="Mật khẩu" onChange={(e) => setPayload(prev => ({ ...prev, password: e.target.value }))} onFocus={() => setInvalidFields(invalidFields.filter(i => i.name !== 'password'))} />
                   {
                     invalidFields.length > 0 && invalidFields.some(i => i.name === 'password') &&
                     <small className="text-red-600 italic">{invalidFields.find(i => i.name === 'password')?.message}</small>
