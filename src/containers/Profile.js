@@ -51,7 +51,7 @@ const Profile = () => {
     }, [])
     //
     return (
-        <div className="w-full xl:border rounded-lg h-[500px] p-10 bg-gray-50">
+        <div className="w-full xl:border rounded-lg lg:p-10 bg-gray-50">
             {loading && (
                 <div>
                     <Backdrop
@@ -63,7 +63,7 @@ const Profile = () => {
                     </Backdrop>
                 </div>
             )}
-            <div className="w-full h-[280px] flex xl:border-b-[3px] py-7 xl:border-b-orange-500 flex-col xl:flex-row items-center gap-10">
+            <div className="w-full lg:h-[280px] flex xl:border-b-[3px] py-7 xl:border-b-orange-500 flex-col xl:flex-row items-center gap-10">
                 <div className="h-[300px] lg:h-full w-[250px] border border-gray-300 rounded-xl relative">
                     <img src={User} className="rounded-xl" />
                     <div className="h-[50px] w-[50px] rounded-full bg-primary bottom-3 right-3 cursor-pointer text-gray-300 hover:text-orange-500 absolute flex justify-center items-center">
@@ -71,8 +71,8 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="ml-5 w-full">
-                    <h1 className="font-bold pb-2 text-[19px] text-primary xl:border-b-[3px] w-full border-orange-500">THÔNG TIN CƠ BẢN</h1>
-                    <div className="grid xl:grid-cols-4 py-3 sm:grid-cols-2 grid-cols-1 md:gap-2 mb-24 md:mb-0">
+                    <h1 className="font-bold pb-2 text-[19px] text-primary border-b-[3px] w-full border-orange-500">THÔNG TIN CƠ BẢN</h1>
+                    <div className="grid xl:grid-cols-4 py-3 sm:grid-cols-2 grid-cols-1 md:gap-2 leading-6">
                         <div className="flex flex-col gap-0 md:gap-5 min-w-[200px]">
                             <div className="flex items-center md:items-start gap-3 md:flex-col md:gap-1">
                                 <h1 className="font-semibold">{type === 'Sinh viên' ? 'Mã SV:' : 'Mã GV'}</h1>

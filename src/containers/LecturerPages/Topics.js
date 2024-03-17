@@ -283,21 +283,19 @@ const Topic = () => {
                         </div>
                     )
                 }
-                <div className="flex flex-col lg:flex-row md:justify-between items-center ">
-                    <div className="flex flex-col lg:flex-row gap-2 items-center">
-                        <div className="px-5 lg:px-0 w-full phone:w-[400px] lg:w-[200px]">
-                            <div class="z-0 px-4 h-[35px] rounded-md tracking-wider border-[1px] w-full border-gray-300 hover:border-primary hover:text-primary transition-all duration-200 cursor-pointer flex items-center">
-                                <input type="text" class="m-auto w-full outline-none text-[13px]" placeholder="Tìm kiếm..." value={search} onChange={(e) => setSearch(e.target.value)} />
-                                <GoSearch />
-                            </div>
-                        </div>
-                        <div className="flex w-full phone:w-[400px] justify-center items-center">
-                            <button onClick={() => { setAdd(true); }} class="w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100 ">Add+</button>
-                            <button onClick={() => { setEdit(prev => !prev); }} class=" ml-5  w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100">Edit</button>
-                            <button onClick={() => { setDel(prev => !prev); }} class=" ml-5  w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100">Delete</button>
+                <div className="flex flex-col lg:flex-row md:justify-between items-center gap-2">
+                    <div className=" lg:px-0 w-full phone:w-[400px] lg:w-[200px] mt-2">
+                        <div class="z-0 px-4 h-[35px] rounded-md tracking-wider border-[1px] w-full border-gray-300 hover:border-primary hover:text-primary transition-all duration-200 cursor-pointer flex items-center">
+                            <input type="text" class="m-auto w-full outline-none text-[13px]" placeholder="Tìm kiếm..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                            <GoSearch />
                         </div>
                     </div>
-                    <div className="relative flex flex-col px-5 lg:px-0 items-center py-2 min-w-[130px] w-full phone:w-[400px] xl:w-[200px] rounded-lg" onClick={() => setOpen((prev) => !prev)}>
+                    <div className="flex w-full phone:w-[400px] justify-center items-center gap-5">
+                        <button onClick={() => { setAdd(true); }} class="w-[85px] lg:w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100 ">Add+</button>
+                        <button onClick={() => { setEdit(prev => !prev); }} class="w-[85px] lg:w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100">Edit</button>
+                        <button onClick={() => { setDel(prev => !prev); }} class="w-[85px] lg:w-[100px] bg-gray-100 border-gray-200 border rounded-xl text-primary py-[6px] hover:text-white hover:bg-primary duration-100">Delete</button>
+                    </div>
+                    <div className="relative flex flex-col lg:px-0 items-center py-2 min-w-[130px] w-full phone:w-[400px] xl:w-[200px] rounded-lg" onClick={() => setOpen((prev) => !prev)}>
                         <div className="w-full relative">
                             <button className="p-4 z-0 h-[35px] flex w-full items-center justify-between text-[13px] rounded-md tracking-wider border-[1px] border-gray-300  hover:border-primary hover:text-primary transition-all duration-200">
                                 {value}
