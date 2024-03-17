@@ -72,7 +72,7 @@ const Profile = () => {
                 </div>
                 <div className="ml-5 w-full">
                     <h1 className="font-bold pb-2 text-[19px] text-primary border-b-[3px] w-full border-orange-500">THÔNG TIN CƠ BẢN</h1>
-                    <div className="grid xl:grid-cols-4 py-3 sm:grid-cols-2 grid-cols-1 md:gap-2 leading-6">
+                    <div className="grid xl:grid-cols-4 py-3 sm:grid-cols-2 grid-cols-1 md:gap-2 leading-8">
                         <div className="flex flex-col gap-0 md:gap-5 min-w-[200px]">
                             <div className="flex items-center md:items-start gap-3 md:flex-col md:gap-1">
                                 <h1 className="font-semibold">{type === 'Sinh viên' ? 'Mã SV:' : 'Mã GV'}</h1>
