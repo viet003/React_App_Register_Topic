@@ -95,15 +95,7 @@ const Login = function () {
       const response = await dispatch(actions.login(payload))
       if (response?.status === 200 && response?.data?.err === 0) {
         setLoading(false)
-        const result = await Swal.fire({
-          title: "Succeeded!",
-          text: response.data.msg ? response.data.msg : "",
-          icon: "success",
-          showConfirmButton: true,
-        });
-        if (result.isDismissed || result.isConfirmed) {
-          setStatus(true)
-        }
+        setStatus(true)
       } else {
         setLoading(false)
         const result = Swal.fire({
