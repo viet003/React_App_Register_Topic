@@ -115,21 +115,20 @@ const Topic = () => {
     }
     //
     const getTopic = async () => {
-        if (type !== '' && userid !== '') {
-            const response = await topicService.apiGetTopic({ userid: userid, schoolyear: value, type: type });
-            if (response.status !== 200) {
-                setLoading(false)
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: response.data.msg ? response.data.msg : "",
-                    footer: '<a href="#">Why do I have this issue?</a>',
-                    showConfirmButton: true,
-                });
-            } else {
-                setLoading(false);
-                return response.data.data
-            }
+        setLoading(true)
+        const response = await topicService.apiGetTopic({ userid: userid, schoolyear: value, type: type });
+        if (response.status !== 200) {
+            setLoading(false)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: response.data.msg ? response.data.msg : "",
+                footer: '<a href="#">Why do I have this issue?</a>',
+                showConfirmButton: true,
+            });
+        } else {
+            setLoading(false);
+            return response.data.data
         }
     }
     //
