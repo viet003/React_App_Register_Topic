@@ -215,16 +215,16 @@ const User = () => {
             let inval = validate(state.data);
             if (inval === 0) {
                 // Xử lý khi dữ liệu hợp lệ
-                // await updateUser({
-                //     ...state.data,
-                //     type: value,
-                //     name: CryptoJS.encrypted(state.data.name),
-                //     dob: CryptoJS.encrypted(moment(new Date(state.data.dob)).format('DD/MM/YYYY').toString()),
-                //     major: CryptoJS.encrypted(state.data.major),
-                //     department: CryptoJS.encrypted(state.data.department),
-                //     clas: CryptoJS.encrypted(state.data.class)
-                // });
-                console.log(state.data.isActive)
+                await updateUser({
+                    ...state.data,
+                    type: value,
+                    name: CryptoJS.encrypted(state.data.name),
+                    dob: CryptoJS.encrypted(moment(new Date(state.data.dob)).format('DD/MM/YYYY').toString()),
+                    major: CryptoJS.encrypted(state.data.major),
+                    department: CryptoJS.encrypted(state.data.department),
+                    clas: CryptoJS.encrypted(state.data.class)
+                });
+                // console.log(state.data.isActive)
                 // fetchData(value)
             } else {
                 // Hiển thị thông báo lỗi cho người dùng
