@@ -359,7 +359,7 @@ const Topic = () => {
                                             </div>
                                             <div className="h-[80px]"></div>
                                             <div className={`bg-white flex flex-col p-3 hover:text-orange-600 ${listColorsText[colorIndex]}`}>
-                                                <p className="text-[12px] text-ellipsis">Mô tả: {element.description}</p>
+                                                <p className="text-[12px] truncate text-ellipsis">Mô tả: {element.description}</p>
                                                 <p className="text-[11px] text-ellipsis">Giảng viên: {CryptoJS.decrypted(element.lecturerTopic.name)}</p>
                                             </div>
                                         </div>
